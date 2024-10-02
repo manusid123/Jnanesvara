@@ -47,7 +47,7 @@ Meet <b>Jnaneshvara</b>, a chatbot created to answer your questions about Lord S
 </p>
 <br>
 <b>Disclaimer:</b> All information provided is sourced from these texts. Please forgive any inaccuracies, as <b>Jnaneshvara</b> is an AI-based bot.
-    
+  <br><br>  <b>Language Supported:</b> Hindi, English 
     """,
     unsafe_allow_html=True
 )

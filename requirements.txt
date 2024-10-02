@@ -1,0 +1,6 @@
+streamlit==1.37.0
+langchain-google-genai
+langchain
+langchian-community
+PyPDF2
+faiss-cpu

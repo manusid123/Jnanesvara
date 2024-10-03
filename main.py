@@ -1,4 +1,4 @@
-import os
+varaimport os
 import json
 
 import streamlit as st
@@ -32,7 +32,7 @@ new_db = FAISS.load_local(
 
 # streamlit page configuration
 st.set_page_config(
-    page_title="Shiva Puraan",
+    page_title="Jnanesvara ! A Gen AI Chatbot",
     page_icon=jnaneshvara_icon,
     layout="centered"
 )

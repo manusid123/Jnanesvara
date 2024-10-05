@@ -132,7 +132,7 @@ def user_input(user_question: str, docs: List[Document]) -> str:
             first_two_words = " ".join(source.split()[:2])
             unique_source_prefixes.add(first_two_words)
 
-        source_text = "\n\n**Source: " + ", ".join(unique_source_prefixes) +"**"
+        source_text = "\n**Source: " + ", ".join(unique_source_prefixes) +"**"
         text_answer += source_text
 
 

@@ -8,6 +8,7 @@ from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from PyPDF2 import PdfReader
+import google.generativeai as genai
 import os
 
 def get_pdf_text(directory) -> List[Document]:

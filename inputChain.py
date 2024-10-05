@@ -10,6 +10,7 @@ from langchain.vectorstores import FAISS
 from PyPDF2 import PdfReader
 import google.generativeai as genai
 import os
+import streamlit as st
 # Access the API key
 google_api_key = os.getenv("GOOGLE_API_KEY")
 

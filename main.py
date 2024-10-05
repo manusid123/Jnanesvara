@@ -93,8 +93,13 @@ if user_prompt:
     ]
 
     response = inputChain.user_input(user_prompt, docs)
+    check = inputChain.check_for_answer(user_question, answer)
+    if (check =="Direct and Accurate\n"):
+        assistant_response = response
+    else:
+        assistant_response = inputChain.generate_reponse(user_question)
 
-    assistant_response = response
+    
     st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
 
     # display the LLM's response

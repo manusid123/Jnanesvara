@@ -84,15 +84,35 @@ def get_conversational_chain():
     return chain
 
 
-def user_input(user_question: str, docs: List[Document]) -> dict:
-    """Gets the answer to the user's question, along with reference document sources.
+# def user_input(user_question: str, docs: List[Document]) -> dict:
+#     """Gets the answer to the user's question, along with reference document sources.
+
+#     Args:
+#         user_question: The user's question.
+#         docs: A list of Documents returned from the similarity search.
+
+#     Returns:
+#         A dictionary containing the model's answer and the reference document sources.
+#     """
+
+#     chain = get_conversational_chain()
+
+#     response = chain(
+#         {"input_documents": docs, "question": user_question}, return_only_outputs=True
+#     )
+
+    
+
+#     return response['output_text']
+def user_input(user_question: str, docs: List[Document]) -> str:
+    """Gets the answer to the user's question, including the source if available.
 
     Args:
         user_question: The user's question.
         docs: A list of Documents returned from the similarity search.
 
     Returns:
-        A dictionary containing the model's answer and the reference document sources.
+        The model's answer as a string, including the source on a new line.
     """
 
     chain = get_conversational_chain()
@@ -101,6 +121,19 @@ def user_input(user_question: str, docs: List[Document]) -> dict:
         {"input_documents": docs, "question": user_question}, return_only_outputs=True
     )
 
-    
+    text_answer = response['output_text']
 
-    return response['output_text']
+    # Extract and format source information
+    reference_docs = [doc.metadata["source"] for doc in docs]
+    if reference_docs:
+        unique_source_prefixes = set()  # Use a set for efficient deduplication
+        for doc in docs:
+            source = doc.metadata["source"].split("_text.pdf")[0]
+            first_two_words = " ".join(source.split()[:2])
+            unique_source_prefixes.add(first_two_words)
+
+        source_text = "\n\n**Source: " + ", ".join(unique_source_prefixes) +"**"
+        text_answer += source_text
+
+
+    return text_answer
